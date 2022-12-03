@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/screens/main.dart';
-import 'package:news_app/util/typography.dart';
 
 import '../util/article_content.dart';
-import '../util/article_details.dart';
 
 class ReadArticle extends StatefulWidget {
   const ReadArticle({
@@ -15,6 +13,8 @@ class ReadArticle extends StatefulWidget {
 }
 
 class _ReadArticleState extends State<ReadArticle> {
+  bool favorite = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,14 +42,31 @@ class _ReadArticleState extends State<ReadArticle> {
                 ),
               ),
               const Spacer(),
-              Container(
-                height: 50,
-                width: 50,
-                decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: MyColors.primaryWhite),
-                  borderRadius: BorderRadius.circular(20),
+              GestureDetector(
+                //gesture detector
+
+                onTap: () {
+                  final snackbar = SnackBar(
+                    backgroundColor: MyColors.primaryBlack,
+                    content: const Text('Saved to favorites'),
+                    action: SnackBarAction(label: 'Okay', onPressed: () {}),
+                  );
+                  setState(() {
+                    favorite = !favorite;
+                  });
+                  ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                },
+
+                child: Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 1, color: MyColors.primaryWhite),
+                    borderRadius: BorderRadius.circular(20),
+                    color: favorite ? Colors.redAccent : Colors.transparent,
+                  ),
+                  child: const Image(image: AssetImage('images/bookmark.png')),
                 ),
-                child: const Image(image: AssetImage('images/bookmark.png')),
               )
             ],
           )),

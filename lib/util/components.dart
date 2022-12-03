@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/screens/read_article.dart';
 import 'package:news_app/util/typography.dart';
 
+import '../screens/category_screen.dart';
 import '../screens/main.dart';
 
 //chip
@@ -12,15 +13,23 @@ class CategoryChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 8),
-      child: Chip(
-          backgroundColor: MyColors.primaryWhite,
-          side: BorderSide(color: MyColors.primaryBlue),
-          label: Text(
-            '#Category',
-            style: TextStyle(color: MyColors.primaryBlue),
-          )),
+    return GestureDetector(
+      //gesture detect
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: ((context) => const CategoryScreen())));
+      },
+
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 4),
+        child: Chip(
+            backgroundColor: MyColors.primaryWhite,
+            side: BorderSide(color: MyColors.primaryBlue.withOpacity(0.2)),
+            label: Text(
+              '#Category',
+              style: TextStyle(color: MyColors.primaryBlue.withOpacity(0.9)),
+            )),
+      ),
     );
   }
 }
@@ -143,7 +152,7 @@ class ArticleTile extends StatelessWidget {
     required this.time,
     required this.date,
     required this.image,
-    required this.category,
+    this.category = '',
   }) : super(key: key);
 
   @override
@@ -171,7 +180,7 @@ class ArticleTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Category: $category',
+                  category,
                   style: subText(),
                 ),
                 const SizedBox(

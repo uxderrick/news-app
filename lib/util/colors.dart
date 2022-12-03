@@ -7,4 +7,5 @@ class Colors {
   static const Color primaryGrey = Color(0x009397A0);
   static const Color bgBlue = Color(0x00EFF5F4);
   static const Color bgWhite = Color(0x00ffffff);
+  static Color bgTrans = const Color(0x00FFFFFF).withOpacity(1);
 }
