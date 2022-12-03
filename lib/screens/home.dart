@@ -65,7 +65,7 @@ class _HomeState extends State<Home> {
               ),
               child: Column(
                 children: [
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 16),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(16),
                     child: Container(
@@ -76,8 +76,8 @@ class _HomeState extends State<Home> {
                       child: TextField(
                         decoration: InputDecoration(
                             hintText: 'Search for an article',
-                            hintStyle:
-                                const TextStyle(color: MyColors.primaryGrey),
+                            hintStyle: TextStyle(
+                                color: MyColors.primaryGrey.withOpacity(0.5)),
                             border: const OutlineInputBorder(
                               borderSide: BorderSide.none,
                             ),
