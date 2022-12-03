@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/screens/main.dart';
+import 'package:news_app/util/typography.dart';
+
+import '../util/article_content.dart';
+import '../util/article_details.dart';
 
 class ReadArticle extends StatefulWidget {
-  const ReadArticle({super.key});
+  const ReadArticle({
+    super.key,
+  });
 
   @override
   State<ReadArticle> createState() => _ReadArticleState();
@@ -51,20 +57,26 @@ class _ReadArticleState extends State<ReadArticle> {
       //body
       body: Stack(
         children: [
-          Container(
-            height: MediaQuery.of(context).size.height / 2,
-            color: Colors.amber,
+          SizedBox(
+            height: 2 * MediaQuery.of(context).size.height / 3,
+            child: const Image(
+                fit: BoxFit.cover,
+                image: AssetImage('images/articleImage2.png')),
           ),
-          Column(
-            children: [
-              const Spacer(),
-              Container(
-                height: 3 * MediaQuery.of(context).size.height / 5,
-                decoration: BoxDecoration(
-                    color: MyColors.primaryWhite,
-                    borderRadius: BorderRadius.circular(32)),
-              ),
-            ],
+          Container(
+            decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                  Colors.transparent,
+                  Colors.white,
+                ])),
+          ),
+          const ArticleContent(
+            articleContent:
+                "Just say anything, George, say what ever's natural, the first thing that comes to your mind. Take that you mutated son-of-a-bitch. My pine, why you. You space bastard, you killed a pine. You do? Yeah, it's 8:00. Hey, McFly, I thought I told you never. Just say anything, George, say what ever's natural, the first thing that comes to your mind. Take that you mutated son-of-a-bitch. My pine, why you. You space bastard, you killed a pine. You do? Yeah, it's 8:00. Hey, McFly, I thought I told you never. Just say anything, George, say what ever's natural, the first thing that comes to your mind. Take that you mutated son-of-a-bitch. My pine, why you. You space bastard, you killed a pine. You do? Yeah, it's 8:00. Hey, McFly, I thought I told you never. Just say anything, George, say what ever's natural, the first thing that comes to your mind. Take that you mutated son-of-a-bitch. My pine, why you. You space bastard, you killed a pine. You do? Yeah, it's 8:00. Hey, McFly, I thought I told you never",
+            articleTitle: 'Unravel mystries of the Maldives',
           ),
         ],
       ),

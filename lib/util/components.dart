@@ -130,6 +130,7 @@ class FeaturedArticle extends StatelessWidget {
   }
 }
 
+//more articles
 class ArticleTile extends StatelessWidget {
   final String title;
   final String time;
@@ -147,75 +148,85 @@ class ArticleTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16),
-      child: Row(
-        children: [
-          Image(
-            image: AssetImage(image),
-          ),
-          const SizedBox(
-            width: 16,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Category: $category',
-                style: subText(),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              SizedBox(
-                width: 260,
-                child: Text(
-                  title,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                      color: MyColors.primaryBlack,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500),
+    return GestureDetector(
+      //gesture detector
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const ReadArticle(),
+            ));
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        child: Row(
+          children: [
+            Image(
+              image: AssetImage(image),
+            ),
+            const SizedBox(
+              width: 16,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Category: $category',
+                  style: subText(),
                 ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Row(
-                children: [
-                  Row(
-                    children: [
-                      const Image(image: AssetImage('images/calendar.png')),
-                      const SizedBox(
-                        width: 8,
-                      ),
-                      Text(
-                        date,
-                        style: subText(),
-                      ),
-                    ],
+                const SizedBox(
+                  height: 8,
+                ),
+                SizedBox(
+                  width: 260,
+                  child: Text(
+                    title,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                        color: MyColors.primaryBlack,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500),
                   ),
-                  const SizedBox(
-                    width: 80,
-                  ),
-                  Row(
-                    children: [
-                      const Image(image: AssetImage('images/clock.png')),
-                      const SizedBox(
-                        width: 8,
-                      ),
-                      Text(
-                        time,
-                        style: subText(),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Row(
+                  children: [
+                    Row(
+                      children: [
+                        const Image(image: AssetImage('images/calendar.png')),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          date,
+                          style: subText(),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      width: 80,
+                    ),
+                    Row(
+                      children: [
+                        const Image(image: AssetImage('images/clock.png')),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          time,
+                          style: subText(),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
