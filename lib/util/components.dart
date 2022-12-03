@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/typography.dart';
+import 'package:news_app/screens/read_article.dart';
+import 'package:news_app/util/typography.dart';
 
-import 'main.dart';
+import '../screens/main.dart';
 
 //chip
 class CategoryChip extends StatelessWidget {
@@ -42,75 +43,87 @@ class FeaturedArticle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(24),
-          boxShadow: [
-            BoxShadow(
-              color: MyColors.primaryBlack.withOpacity(0.051),
-              offset: const Offset(0, 3),
-              blurRadius: 25,
-            ),
-          ],
-          color: MyColors.primaryWhite,
-        ),
-        width: 255,
-        padding: const EdgeInsets.all(12),
-        child: Column(
-          children: [
-            Image(image: AssetImage(image)),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(
-              title,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
-                  color: MyColors.primaryBlack,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  height: 1.5),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                Image(
-                  height: 32,
-                  width: 32,
-                  image: AssetImage(authorImage),
-                ),
-                const SizedBox(
-                  width: 12,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(authorName),
-                    const SizedBox(
-                      height: 2,
-                    ),
-                    Text(
-                      date,
-                      style: subText(),
-                    ),
-                  ],
-                ),
-                const Spacer(),
-                Container(
-                  decoration: BoxDecoration(
-                      color: MyColors.bgBlue,
-                      borderRadius: BorderRadius.circular(16)),
-                  width: 40,
-                  child: const Image(image: AssetImage('images/open.png')),
-                ),
-              ],
-            ),
-          ],
+    return GestureDetector(
+      //gesture detector
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const ReadArticle(),
+            ));
+      },
+
+      //design
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(24),
+            boxShadow: [
+              BoxShadow(
+                color: MyColors.primaryBlack.withOpacity(0.051),
+                offset: const Offset(0, 3),
+                blurRadius: 25,
+              ),
+            ],
+            color: MyColors.primaryWhite,
+          ),
+          width: 255,
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            children: [
+              Image(image: AssetImage(image)),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                    color: MyColors.primaryBlack,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    height: 1.5),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Image(
+                    height: 32,
+                    width: 32,
+                    image: AssetImage(authorImage),
+                  ),
+                  const SizedBox(
+                    width: 12,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(authorName),
+                      const SizedBox(
+                        height: 2,
+                      ),
+                      Text(
+                        date,
+                        style: subText(),
+                      ),
+                    ],
+                  ),
+                  const Spacer(),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: MyColors.bgBlue,
+                        borderRadius: BorderRadius.circular(16)),
+                    width: 40,
+                    child: const Image(image: AssetImage('images/open.png')),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

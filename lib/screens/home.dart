@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/typography.dart';
+import 'package:news_app/screens/read_article.dart';
+import 'package:news_app/util/typography.dart';
 
-import 'components.dart';
+import '../util/components.dart';
 import 'main.dart';
 
 class Home extends StatefulWidget {
@@ -164,7 +165,7 @@ class _HomeState extends State<Home> {
                       height: 1000,
                       child: ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),
-                        itemCount: 10,
+                        itemCount: 5,
                         itemBuilder: (BuildContext context, int index) {
                           return const Padding(
                             padding: EdgeInsets.only(right: 0),

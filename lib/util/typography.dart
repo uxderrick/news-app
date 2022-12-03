@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'main.dart';
+import '../screens/main.dart';
 
 TextStyle subText() {
   return const TextStyle(
