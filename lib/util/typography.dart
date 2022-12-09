@@ -9,3 +9,11 @@ TextStyle subText() {
     fontWeight: FontWeight.normal,
   );
 }
+
+TextStyle highlightText() {
+  return const TextStyle(
+    color: MyColors.primaryBlue,
+    fontSize: 16,
+    fontWeight: FontWeight.normal,
+  );
+}
