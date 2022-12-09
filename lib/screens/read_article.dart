@@ -48,7 +48,9 @@ class _ReadArticleState extends State<ReadArticle> {
                 onTap: () {
                   final snackbar = SnackBar(
                     backgroundColor: MyColors.primaryBlack,
-                    content: const Text('Saved to favorites'),
+                    content: Text(favorite
+                        ? 'Removed from favorites'
+                        : 'Saved to favorites'),
                     action: SnackBarAction(label: 'Okay', onPressed: () {}),
                   );
                   setState(() {
